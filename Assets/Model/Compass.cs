@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Compass : MonoBehaviour
 {
 
 
