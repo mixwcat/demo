@@ -32,6 +32,8 @@ public class _Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isMoving = false;
+            RayCast rc = GameObject.Find("Capsule").GetComponent<RayCast>();
+            rc.hasMoved = false; // 使得磁石碰撞可以再次触发
         }
     }
     #endregion
