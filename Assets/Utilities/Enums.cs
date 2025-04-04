@@ -8,3 +8,11 @@ public enum NPoleDirection
     Left,
     Right
 }
+
+[Flags]
+public enum PoleType
+{
+    N,
+    S,
+    None
+}

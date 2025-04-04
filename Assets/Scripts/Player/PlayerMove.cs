@@ -12,7 +12,6 @@ public class PlayerMove : MonoBehaviour
     private float moveX;
     private float moveY;    
     
-
     public float speed;
     private Action currentMoveAction;
 
@@ -49,7 +48,7 @@ public class PlayerMove : MonoBehaviour
         else if(moveX>0)currentMoveAction=moveRight;
         else currentMoveAction=moveLeft;
 
-
+        //空格表示确认
         if(!isMoving)
         if(Input.GetKey(KeyCode.Space))TurnManager.Instance.PlayerTurnEndEvent.RaiseEvent(null,this);
 
@@ -65,6 +64,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        //如果玩家在移动,并且速度小于一个很小的值,则停止移动,并且将玩家位置对齐到网格上,不然全是bug
         if(isMoving&&player.rb.linearVelocity.magnitude < Mathf.Epsilon)
         {
             player.rb.linearVelocity = Vector2.zero;
@@ -84,12 +84,12 @@ public class PlayerMove : MonoBehaviour
         if(isCooldown)return;
         canMove = true;
         isCooldown = true;
-        //等待200毫秒
+        //等待200毫秒,防止短时间内多次触发
         await Task.Delay(200);
         isCooldown = false;
     }
 
-//TODO:移动预示
+//TODO:移动意图显示
     public void moveUp()
     {
         player.rb.linearVelocity=Vector2.up * speed;
@@ -107,7 +107,7 @@ public class PlayerMove : MonoBehaviour
         player.rb.linearVelocity=Vector2.right * speed;
     }
 
-//TODO:转向并添加过渡，转向预示
+//TODO:转向意图显示
     public void turnNPoleDirectionToUp()
     {
         player.nPoleDirection = NPoleDirection.Up;

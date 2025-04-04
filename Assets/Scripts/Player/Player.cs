@@ -4,13 +4,43 @@ using UnityEngine;
 
 public class Player:MonoBehaviour
 {
-    public NPoleDirection nPoleDirection;
+    public NPoleDirection nPoleDirection=NPoleDirection.Up;//N极方向
     public Rigidbody2D rb;
     public SpriteRenderer spriteRenderer;
 
     private float targetAngle;
 
-    IEnumerator  turnToNPoleDirection()
+    public Vector2Int gridPosition;//网格坐标
+
+    void FixedUpdate()
+    {
+        gridPosition=WorldToGrid(transform.position);//更新网格坐标
+    }
+
+    public Vector2Int WorldToGrid(Vector2 worldPosition)
+    {
+        return new Vector2Int(Mathf.RoundToInt(worldPosition.x), Mathf.RoundToInt(worldPosition.y));
+    }
+
+    public Vector2 directionToVector2(int isN)//根据N极方向返回向量，参数为1则返回N极方向，-1返回S极方向
+    {
+        switch (nPoleDirection)
+        {
+            case NPoleDirection.Up:
+                return new Vector2(0, 1*isN);
+            case NPoleDirection.Down:
+                return new Vector2(0, -1*isN);
+            case NPoleDirection.Left:
+                return new Vector2(-1*isN, 0);
+            case NPoleDirection.Right:
+                return new Vector2(1*isN, 0);
+                default:
+                    return Vector2Int.zero;
+        }
+    }
+
+
+    IEnumerator  turnToNPoleDirection()//转动方向
     {
         switch(nPoleDirection)
         {
@@ -36,7 +66,7 @@ public class Player:MonoBehaviour
                 targetRotation, 
                 900 * Time.deltaTime
             );
-            yield return null; // 每帧暂停一次
+            yield return null;
         }
     }
 
