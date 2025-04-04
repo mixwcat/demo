@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -6,16 +7,18 @@ public class PlayerMove : MonoBehaviour
 {
     public Player player;
     private bool canMove=false;
+    private bool isMoving=false;
     private bool isCooldown=false;
     private float moveX;
     private float moveY;    
     
-    private Action currentMoveAction;
-    private Vector2 moveDirection;
 
-    void Update()
+    public float speed;
+    private Action currentMoveAction;
+
+    void FixedUpdate()
     {
-//只保存一种动作
+        //只保存一种动作
         moveX = Input.GetAxis("Horizontal");
         if (moveX == 0)
         {
@@ -46,68 +49,87 @@ public class PlayerMove : MonoBehaviour
         else if(moveX>0)currentMoveAction=moveRight;
         else currentMoveAction=moveLeft;
 
-        
-        
+
+        if(!isMoving)
         if(Input.GetKey(KeyCode.Space))TurnManager.Instance.PlayerTurnEndEvent.RaiseEvent(null,this);
+
 
         if(canMove)
         {
             if(currentMoveAction != null)
             {
+                isMoving = true;
                 currentMoveAction.Invoke();
                 currentMoveAction = null;
                 canMove = false;
             }
         }
+
+        if(isMoving&&player.rb.linearVelocity.magnitude < Mathf.Epsilon)
+        {
+            player.rb.linearVelocity = Vector2.zero;
+            SnapToGrid();
+            isMoving = false;
+        }
+    }
+
+    public void SnapToGrid()
+    {
+        Vector2Int gridPosition = new Vector2Int(Mathf.RoundToInt(player.transform.position.x), Mathf.RoundToInt(player.transform.position.y));
+        player.transform.position = new Vector3(gridPosition.x, gridPosition.y, player.transform.position.z);
     }
 
     public async void OnPlayerTurnEnd()
     {
         if(isCooldown)return;
+        canMove = true;
         isCooldown = true;
         //等待200毫秒
         await Task.Delay(200);
         isCooldown = false;
-        canMove = true;
     }
 
-//TODO:移动添加过渡，移动逻辑，移动预示动画
+//TODO:移动预示
     public void moveUp()
     {
-        player.rb.MovePosition(player.rb.position + Vector2.up);
+        player.rb.linearVelocity=Vector2.up * speed;
     }
     public void moveDown()
     {
-        player.rb.MovePosition(player.rb.position + Vector2.down * 1);
+        player.rb.linearVelocity=Vector2.down * speed;
     }
     public void moveLeft()
     {
-        player.rb.MovePosition(player.rb.position + Vector2.left * 1);
+        player.rb.linearVelocity=Vector2.left * speed;
     }
     public void moveRight()
     {
-        player.rb.MovePosition(player.rb.position + Vector2.right * 1);
+        player.rb.linearVelocity=Vector2.right * speed;
     }
 
-//TODO:转向并添加过渡，转向预示动画
+//TODO:转向并添加过渡，转向预示
     public void turnNPoleDirectionToUp()
     {
         player.nPoleDirection = NPoleDirection.Up;
+        player.startTurnToNPoleDirection();
     }
 
     public void turnNPoleDirectionToDown()
     {
         player.nPoleDirection = NPoleDirection.Down;
+        player.startTurnToNPoleDirection();
     }
 
     public void turnNPoleDirectionToLeft()
     {
         player.nPoleDirection = NPoleDirection.Left;
+        player.startTurnToNPoleDirection();
     }
 
     public void turnNPoleDirectionToRight()
     {
         player.nPoleDirection = NPoleDirection.Right;
+        player.startTurnToNPoleDirection();
     }
 
 }

@@ -42,8 +42,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
+  - name: AirWall
     uniqueID: 2443802597
+    locked: 0
+  - name: BackGround
+    uniqueID: 3202194119
+    locked: 0
+  - name: Ground
+    uniqueID: 3019564259
+    locked: 0
+  - name: Else
+    uniqueID: 762349749
+    locked: 0
+  - name: Player
+    uniqueID: 763358367
     locked: 0
   m_RenderingLayers:
   - Default
