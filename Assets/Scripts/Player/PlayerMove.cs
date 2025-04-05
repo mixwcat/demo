@@ -121,7 +121,6 @@ public class PlayerMove : MonoBehaviour
                 Vector2 currentVeclocity=player.rb.linearVelocity;
                 if(Vector2.Dot(currentVeclocity.normalized, -direction) > 0.99f)
                 {
-                    Debug.Log("当前速度与排斥方向相反,速度清0");
                     player.rb.linearVelocity=Vector2.zero;
                     player.transform.position = targetGrid;
                     yield break;
@@ -135,8 +134,10 @@ public class PlayerMove : MonoBehaviour
                      player.transform.position = targetGrid;
                      yield break;
                 }
-
+                //这里是飞跃
+                //if(player.gridPosition==)
                  player.transform.position = Vector2.MoveTowards(player.transform.position, trueTargetGrid, moveSpeed * Time.deltaTime);
+
                 yield return null;
             }
         }
@@ -150,7 +151,7 @@ public class PlayerMove : MonoBehaviour
     public void SnapToGrid()
     {
         Vector2Int gridPosition = new Vector2Int(Mathf.RoundToInt(player.transform.position.x), Mathf.RoundToInt(player.transform.position.y));
-        player.transform.position = new Vector3(gridPosition.x, gridPosition.y, player.transform.position.z);
+        player.transform.position = new Vector2(gridPosition.x, gridPosition.y);
     }
 
     public async void OnTimeToMove()

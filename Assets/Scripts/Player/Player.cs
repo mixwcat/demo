@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player:MonoBehaviour
 {
+    public Vector2Int gridPosition;//网格坐标
     public NPoleDirection nPoleDirection=NPoleDirection.Up;//N极方向
     public Rigidbody2D rb;
     public SpriteRenderer spriteRenderer;
@@ -11,10 +12,22 @@ public class Player:MonoBehaviour
     public bool isTurning=false;//是否正在转动
     public bool isMoving=false;//是否正在移动
     public bool isCoroutine=false;
+    public bool isInvincible=false;//是否无敌,无敌状态下不受陷阱影响，当跳跃时无敌
+
     private float targetAngle;
 
-    public Vector2Int gridPosition;//网格坐标
+    [Header("事件广播")]
+    public ObjectEventSO PlayerGridPosChangedEvent;
 
+    void FixedUpdate()
+    {
+        if(gridPosition!=WorldToGrid(transform.position))
+        {
+            gridPosition=WorldToGrid(transform.position);
+            PlayerGridPosChangedEvent.RaiseEvent(null,this);
+        }
+        else gridPosition=WorldToGrid(transform.position);
+    }
 
     public Vector2Int WorldToGrid(Vector2 worldPosition)
     {

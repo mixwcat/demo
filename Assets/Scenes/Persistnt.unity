@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &44246442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,6 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1658912495}
+  playerScript: {fileID: 1658912496}
   TimeToMoveEvent: {fileID: 11400000, guid: 14d01b65d6dc323479ae1b6ecf564aa7, type: 2}
 --- !u!4 &1320533049
 Transform:
@@ -891,7 +892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1658912496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,13 +905,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da999db69fa98142aa81649ffac14d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0}
   nPoleDirection: 0
   rb: {fileID: 1658912497}
   spriteRenderer: {fileID: 1613884509}
   isTurning: 0
   isMoving: 0
   isCoroutine: 0
-  gridPosition: {x: 0, y: 0}
+  isInvincible: 0
+  PlayerGridPosChangedEvent: {fileID: 11400000, guid: a7af6d97e4f18274cbef6a0f76076385, type: 2}
 --- !u!50 &1658912497
 Rigidbody2D:
   serializedVersion: 5
@@ -1018,7 +1021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2102274152
 Transform:
   m_ObjectHideFlags: 0

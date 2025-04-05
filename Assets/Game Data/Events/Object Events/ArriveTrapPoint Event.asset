@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1f29eb790324574ba8b877dc5df93fd, type: 3}
-  m_Name: AfterPuzzle1Load Event
+  m_Name: ArriveTrapPoint Event
   m_EditorClassIdentifier: 
-  description: "\u52A0\u8F7D Puzzle1 \u540E\u4E8B\u4EF6"
-  lastSender: SceneLoad Manager (SceneLoadManager)
+  description: "\u5230\u8FBE\u9677\u9631\u540E\u7684\u4E8B\u4EF6"
+  lastSender: TrapPoint (TrapPoint)

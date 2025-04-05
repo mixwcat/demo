@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f29eb790324574ba8b877dc5df93fd, type: 3}
   m_Name: StartGame Event
   m_EditorClassIdentifier: 
-  description: 
-  lastSender: 
+  description: "\u5728\u83DC\u5355\u70B9\u51FB\u5F00\u59CB\u6309\u94AE\u540E\u4E8B\u4EF6"
+  lastSender: Menu Panel (MenuPanel)
