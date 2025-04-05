@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public class Raycast : SingletonPatternMonoAutoBase_DontDestroyOnLoad<Raycast>
+public class Raycast : MonoBehaviour
 {
     //过滤射线检测的层
     private int magnetLayer;
     public Player player;
-    public Magnet targetMagnet;
+    private Magnet checkedMagnet;
 
+    public Magnet CheckedMagnet
+    {
+        get { return checkedMagnet; }
+    }
     //射线检测的网格
     private Vector2 checkGrid;
     private Collider2D hit;
@@ -23,6 +27,7 @@ public class Raycast : SingletonPatternMonoAutoBase_DontDestroyOnLoad<Raycast>
 
     void FixedUpdate()
     {
+        if(!player.isMoving) return;
         CheckSurroundingMagnets();
     }
 
@@ -33,23 +38,22 @@ public class Raycast : SingletonPatternMonoAutoBase_DontDestroyOnLoad<Raycast>
         
         Vector2[] checkDirections={player.directionToVector2(1),player.directionToVector2(-1)};
  
- //TODO:检测N极和S极,并执行后续逻辑
- //N极检测
+ //N极方向的检测
         var direction=checkDirections[0];
             checkGrid = player.gridPosition +direction+new Vector2(0.5f,0.5f);
             hit = Physics2D.OverlapPoint(checkGrid,magnetLayer);
             if (hit != null)
             {
-                targetMagnet=hit.GetComponent<Magnet>();
+                checkedMagnet=hit.GetComponent<Magnet>();
                 nDirectionMagnetDetectedEvent.RaiseEvent(null,this);
             }
-//S极检测
+//S极方向的检测
             direction=checkDirections[1];
             checkGrid = player.gridPosition +direction+new Vector2(0.5f,0.5f);
             hit = Physics2D.OverlapPoint(checkGrid,magnetLayer);
             if (hit != null)
             {
-                targetMagnet=hit.GetComponent<Magnet>();
+                checkedMagnet=hit.GetComponent<Magnet>();
                 sDirectionMagnetDetectedEvent.RaiseEvent(null,this);
             }
         

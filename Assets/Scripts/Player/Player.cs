@@ -9,6 +9,7 @@ public class Player:MonoBehaviour
     public SpriteRenderer spriteRenderer;
     
     public bool isTurning=false;//是否正在转动
+    public bool isMoving=false;//是否正在移动
     private float targetAngle;
 
     public Vector2Int gridPosition;//网格坐标

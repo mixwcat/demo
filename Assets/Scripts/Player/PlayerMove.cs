@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public Player player;
+    public Raycast raycast;
     private bool canMove=false;
-    private bool isMoving=false;
     private bool isCooldown=false;
     private float moveX;
     private float moveY;    
@@ -49,7 +49,7 @@ public class PlayerMove : MonoBehaviour
         else currentMoveAction=moveLeft;
 
         //空格表示确认
-        if(!isMoving)
+        if(!player.isMoving)
         if(Input.GetKey(KeyCode.Space))TurnManager.Instance.TimeToMoveEvent.RaiseEvent(null,this);
 
 
@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
         {
             if(currentMoveAction != null)
             {
-                isMoving = true;
+                player.isMoving = true;
                 currentMoveAction.Invoke();
                 currentMoveAction = null;
                 canMove = false;
@@ -65,18 +65,18 @@ public class PlayerMove : MonoBehaviour
         }
 
         //如果玩家在移动,且不是在转动中,并且速度小于一个很小的值,则停止移动,并且将玩家位置对齐到网格上,不然全是bug
-        if(isMoving&&!player.isTurning&&player.rb.linearVelocity.magnitude < Mathf.Epsilon)
+        if(player.isMoving&&!player.isTurning&&player.rb.linearVelocity.magnitude < Mathf.Epsilon)
         {
             player.rb.linearVelocity = Vector2.zero;
             SnapToGrid();
-            isMoving = false;
+            player.isMoving = false;
         }
     }
 
 
     public void OnNDirectionMagnetDetected()
     {
-        Magnet checkedMagnet =Raycast.Instance.targetMagnet as Magnet;
+        Magnet checkedMagnet =raycast.CheckedMagnet as Magnet;
         if (checkedMagnet != null)
         {
             if (checkedMagnet.poleType == PoleType.N)
@@ -98,7 +98,7 @@ public class PlayerMove : MonoBehaviour
 
     public void OnSDirectionMagnetDetected()
     {
-        Magnet checkedMagnet = Raycast.Instance.targetMagnet as Magnet;
+        Magnet checkedMagnet = raycast.CheckedMagnet as Magnet;
         if (checkedMagnet != null)
         {
             if (checkedMagnet.poleType == PoleType.N)

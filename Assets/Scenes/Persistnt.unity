@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1658912496}
+  raycast: {fileID: 212869370}
   speed: 2
 --- !u!4 &147658901
 Transform:
@@ -282,7 +283,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1658912496}
-  targetMagnet: {fileID: 0}
   nDirectionMagnetDetectedEvent: {fileID: 11400000, guid: 34b9fc329178fd244a4f31b23c42021e, type: 2}
   sDirectionMagnetDetectedEvent: {fileID: 11400000, guid: baeadb40a9ff2f14ba25b29598565011, type: 2}
 --- !u!4 &212869371
@@ -772,6 +772,7 @@ MonoBehaviour:
   rb: {fileID: 1658912497}
   spriteRenderer: {fileID: 1613884509}
   isTurning: 0
+  isMoving: 0
   gridPosition: {x: 0, y: 0}
 --- !u!50 &1658912497
 Rigidbody2D:
