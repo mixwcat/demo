@@ -14,6 +14,7 @@ public class PlayerManager : SingletonPatternMonoAutoBase_DontDestroyOnLoad<Play
     {
         player.SetActive(true);
     }
+    
     public void ArriveTrapPoint()
     {
         if(playerScript.isInvincible) Debug.Log("玩家无敌，无法触发陷阱");
