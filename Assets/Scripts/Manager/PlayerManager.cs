@@ -16,7 +16,10 @@ public class PlayerManager : SingletonPatternMonoAutoBase_DontDestroyOnLoad<Play
     }
     public void ArriveTrapPoint()
     {
-        playerScript.isMoving = false;
-        TimeToMoveEvent.RaiseEvent(null, this);
+        if(playerScript.isInvincible) Debug.Log("玩家无敌，无法触发陷阱");
+        else
+        {
+            Debug.Log("到达了陷阱点，游戏结束");
+        }
     }
 }

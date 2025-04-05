@@ -129,14 +129,21 @@ public class PlayerMove : MonoBehaviour
                 //如果目标格子是空气墙，不施加排斥力
                 if (Physics2D.OverlapPoint(targetGrid+new Vector2(0.5f,0.5f), LayerMask.GetMask("AirWall"))) yield break;
 
+                //这里是应该飞跃但是有墙壁，只能移动一格的情况
                 if (mode==2&&Physics2D.OverlapPoint(mode2TargetGrid + new Vector2(0.5f, 0.5f), LayerMask.GetMask("AirWall"))) 
                 {
                      player.transform.position = targetGrid;
                      yield break;
                 }
-                //这里是飞跃
-                //if(player.gridPosition==)
-                 player.transform.position = Vector2.MoveTowards(player.transform.position, trueTargetGrid, moveSpeed * Time.deltaTime);
+                //飞跃情况
+                if(trueTargetGrid==mode2TargetGrid)
+                {
+                    player.isInvincible=true;
+                    if(player.gridPosition==mode2TargetGrid)player.isInvincible=false;
+                }
+                //正常情况
+                else player.isInvincible=false;
+                player.transform.position = Vector2.MoveTowards(player.transform.position, trueTargetGrid, moveSpeed * Time.deltaTime);
 
                 yield return null;
             }
