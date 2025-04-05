@@ -10,14 +10,11 @@ public class Player:MonoBehaviour
     
     public bool isTurning=false;//是否正在转动
     public bool isMoving=false;//是否正在移动
+    public bool isCoroutine=false;
     private float targetAngle;
 
     public Vector2Int gridPosition;//网格坐标
 
-    void FixedUpdate()
-    {
-        gridPosition=WorldToGrid(transform.position);//更新网格坐标
-    }
 
     public Vector2Int WorldToGrid(Vector2 worldPosition)
     {
@@ -76,8 +73,10 @@ public class Player:MonoBehaviour
        public void startTurnToNPoleDirection()
     {
         isTurning = true;
+        isCoroutine = true;
         StartCoroutine(turnToNPoleDirection(()=>{
             isTurning = false;
+            isCoroutine = false;
         }));
     }
 

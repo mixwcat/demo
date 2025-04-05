@@ -40,7 +40,7 @@ public class Raycast : MonoBehaviour
  
  //N极方向的检测
         var direction=checkDirections[0];
-            checkGrid = player.gridPosition +direction+new Vector2(0.5f,0.5f);
+            checkGrid = player.WorldToGrid(player.transform.position) +direction+new Vector2(0.5f,0.5f);
             hit = Physics2D.OverlapPoint(checkGrid,magnetLayer);
             if (hit != null)
             {
@@ -49,7 +49,7 @@ public class Raycast : MonoBehaviour
             }
 //S极方向的检测
             direction=checkDirections[1];
-            checkGrid = player.gridPosition +direction+new Vector2(0.5f,0.5f);
+            checkGrid = player.WorldToGrid(player.transform.position) +direction+new Vector2(0.5f,0.5f);
             hit = Physics2D.OverlapPoint(checkGrid,magnetLayer);
             if (hit != null)
             {

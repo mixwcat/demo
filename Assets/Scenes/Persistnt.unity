@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1658912496}
   raycast: {fileID: 212869370}
-  speed: 2
+  speed: 3
 --- !u!4 &147658901
 Transform:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &410682114
 Transform:
   m_ObjectHideFlags: 0
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 1613884508}
   - component: {fileID: 1613884509}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -676,8 +676,8 @@ Transform:
   m_GameObject: {fileID: 1613884507}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalPosition: {x: 0.491, y: 0.503, z: 0}
+  m_LocalScale: {x: 1.0193639, y: 1.2492845, z: 2.11}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1658912499}
@@ -726,7 +726,7 @@ SpriteRenderer:
   m_SortingLayerID: 763358367
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5691269341329648135, guid: d86692d23fafaf642a1dd6f74709751f, type: 3}
+  m_Sprite: {fileID: -8491356359149837760, guid: d86692d23fafaf642a1dd6f74709751f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -773,6 +773,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1613884509}
   isTurning: 0
   isMoving: 0
+  isCoroutine: 0
   gridPosition: {x: 0, y: 0}
 --- !u!50 &1658912497
 Rigidbody2D:
@@ -845,7 +846,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.95, y: 0.95}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!4 &1658912499
 Transform:
