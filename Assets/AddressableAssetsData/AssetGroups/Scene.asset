@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scene
   m_EditorClassIdentifier: 
   m_GroupName: Scene
-  m_GUID: 6c8d6e7412579bd40aa7fab07f5f6624
+  m_GUID: 0ca49f1abac93b14a9ccd65e10295d82
   m_SerializeEntries:
   - m_GUID: 4fe1323f2f94fc3428aa2cf4e093f550
     m_Address: Puzzle1
@@ -31,8 +31,8 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: aa301c0b3d7f9e24e9cc33f5fefe4e35, type: 2}
+  m_Settings: {fileID: 11400000, guid: dc41bdec4914fa34cba4e3bdf881f379, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 258ce49d897ac0b49a7ce1fc1c5ac8f1, type: 2}
-    - {fileID: 11400000, guid: fe70d5c4a16980a45b64c00b6a880620, type: 2}
+    - {fileID: 11400000, guid: d37a3cca8e3c9b245b4868e51f7af5e5, type: 2}
+    - {fileID: 11400000, guid: 5f4c7fdccb7e53c43bb83cdc022b7a40, type: 2}
