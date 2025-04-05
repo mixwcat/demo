@@ -241,6 +241,6 @@ public class PlayerMove : MonoBehaviour
 
                 //空格表示确认
         if(!player.isMoving)
-        if(Input.GetKey(KeyCode.Space))TurnManager.Instance.TimeToMoveEvent.RaiseEvent(null,this);
+        if(Input.GetKey(KeyCode.Space))PlayerManager.Instance.TimeToMoveEvent.RaiseEvent(null,this);
     }
 }
