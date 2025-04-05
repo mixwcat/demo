@@ -50,7 +50,7 @@ public class PlayerMove : MonoBehaviour
 
         //空格表示确认
         if(!isMoving)
-        if(Input.GetKey(KeyCode.Space))TurnManager.Instance.PlayerTurnEndEvent.RaiseEvent(null,this);
+        if(Input.GetKey(KeyCode.Space))TurnManager.Instance.TimeToMoveEvent.RaiseEvent(null,this);
 
 
         if(canMove)
@@ -64,12 +64,57 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        //如果玩家在移动,并且速度小于一个很小的值,则停止移动,并且将玩家位置对齐到网格上,不然全是bug
-        if(isMoving&&player.rb.linearVelocity.magnitude < Mathf.Epsilon)
+        //如果玩家在移动,且不是在转动中,并且速度小于一个很小的值,则停止移动,并且将玩家位置对齐到网格上,不然全是bug
+        if(isMoving&&!player.isTurning&&player.rb.linearVelocity.magnitude < Mathf.Epsilon)
         {
             player.rb.linearVelocity = Vector2.zero;
             SnapToGrid();
             isMoving = false;
+        }
+    }
+
+
+    public void OnNDirectionMagnetDetected()
+    {
+        Magnet checkedMagnet =Raycast.Instance.targetMagnet as Magnet;
+        if (checkedMagnet != null)
+        {
+            if (checkedMagnet.poleType == PoleType.N)
+            {
+               //排斥
+               Debug.Log("N N排斥");
+            }
+            else if (checkedMagnet.poleType == PoleType.S)
+            {
+                //吸引
+                Debug.Log("N S吸引");
+            }
+        }
+        else
+        {
+            Debug.Log("检测到的物体不是磁铁");
+        }
+    }
+
+    public void OnSDirectionMagnetDetected()
+    {
+        Magnet checkedMagnet = Raycast.Instance.targetMagnet as Magnet;
+        if (checkedMagnet != null)
+        {
+            if (checkedMagnet.poleType == PoleType.N)
+            {
+                //吸引
+                Debug.Log("S N吸引");
+            }
+            else if (checkedMagnet.poleType == PoleType.S)
+            {
+                //排斥
+                Debug.Log("S S排斥");
+            }
+        }
+        else
+        {
+            Debug.Log("检测到的物体不是磁铁");
         }
     }
 
@@ -79,9 +124,9 @@ public class PlayerMove : MonoBehaviour
         player.transform.position = new Vector3(gridPosition.x, gridPosition.y, player.transform.position.z);
     }
 
-    public async void OnPlayerTurnEnd()
+    public async void OnTimeToMove()
     {
-        if(isCooldown)return;
+        if(isCooldown||currentMoveAction==null)return;
         canMove = true;
         isCooldown = true;
         //等待200毫秒,防止短时间内多次触发

@@ -7,7 +7,8 @@ public class Player:MonoBehaviour
     public NPoleDirection nPoleDirection=NPoleDirection.Up;//N极方向
     public Rigidbody2D rb;
     public SpriteRenderer spriteRenderer;
-
+    
+    public bool isTurning=false;//是否正在转动
     private float targetAngle;
 
     public Vector2Int gridPosition;//网格坐标
@@ -40,7 +41,7 @@ public class Player:MonoBehaviour
     }
 
 
-    IEnumerator  turnToNPoleDirection()//转动方向
+    IEnumerator  turnToNPoleDirection(Action onComplete)//转动方向
     {
         switch(nPoleDirection)
         {
@@ -68,11 +69,15 @@ public class Player:MonoBehaviour
             );
             yield return null;
         }
+        onComplete();
     }
 
        public void startTurnToNPoleDirection()
     {
-        StartCoroutine(turnToNPoleDirection());
+        isTurning = true;
+        StartCoroutine(turnToNPoleDirection(()=>{
+            isTurning = false;
+        }));
     }
 
 }

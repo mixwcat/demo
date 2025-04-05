@@ -12,7 +12,7 @@ public class GamePlayPanel : MonoBehaviour
         ConfirmActionButton = rootElement.Q<Button>("ConfirmButton");
         ConfirmActionButton.clicked+=()=>
         {
-            TurnManager.Instance.PlayerTurnEndEvent.RaiseEvent(null,this);
+            TurnManager.Instance.TimeToMoveEvent.RaiseEvent(null,this);
         };
     }
 }
