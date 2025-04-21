@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Book
+  m_EditorClassIdentifier: 
+  m_GroupName: Book
+  m_GUID: 44df0d21b2877a544a9929f135c2d91c
+  m_SerializeEntries:
+  - m_GUID: 34d39f230e9063543af35725af4f00f3
+    m_Address: book1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b596acf0d5256546aae909d3f5cd19a
+    m_Address: comic2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99aaefa042ebb4e45b168cba8500ef13
+    m_Address: book2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b523f185c75e8804599a3a5462b2f781
+    m_Address: comic3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5c318814ef745d4ea55157a2ec88304
+    m_Address: book3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd1c58e89f865114c9eb6f01ffcafb1d
+    m_Address: comic1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: dc41bdec4914fa34cba4e3bdf881f379, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 99c4e40dd5ac3a34f808692d3914c851, type: 2}
+    - {fileID: 11400000, guid: ec63a05fc3308b444ad14acd15a21565, type: 2}

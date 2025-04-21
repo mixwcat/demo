@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Ground
+  - AirWall
+  - Magnet
+  - Puzzle
+  - Player1
+  - Player2
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Magnet
+  - Player
+  - AirWall
+  - EventPoint
+  - Puzzle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: AirWall
+    uniqueID: 2443802597
+    locked: 0
+  - name: BackGround
+    uniqueID: 3202194119
+    locked: 0
+  - name: Ground
+    uniqueID: 3019564259
+    locked: 0
+  - name: Else
+    uniqueID: 762349749
+    locked: 0
+  - name: Player
+    uniqueID: 763358367
+    locked: 0
+  m_RenderingLayers:
+  - Default
